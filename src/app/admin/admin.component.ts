@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { KeyManagementService } from '../key-management.service';
+
 import { KeyService } from '../key-service.service';
 import { Key } from '../key.model';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteConfirmationDialogComponent } from '../shared/delete-confirmation-dialog/delete-confirmation-dialog.component';
 
 @Component({
   selector: 'app-admin',
@@ -12,12 +14,15 @@ import { Key } from '../key.model';
 export class AdminComponent implements OnInit {
   keyForm: FormGroup;
   keys: Key[] = [];  // Replace with your data model if you have one.
-  displayedColumns: string[] = ['key', 'status', 'actions'];
+  displayedColumns: string[] = ['key', 'status', 'user', 'creation_date', 'actions'];
 
   constructor(
     private fb: FormBuilder,
     private keyService: KeyService,
+    private dialog: MatDialog,
+    
   ) {
+
     this.keyForm = this.fb.group({
       keyValue: ['', Validators.required]
     });
@@ -43,6 +48,20 @@ export class AdminComponent implements OnInit {
         this.loadKeys();  // Refresh the list of keys after adding a new one.
       });
     }
+  }
+
+  getDate(date: number) {
+    return new Date(date).toLocaleDateString();
+  }
+
+  confirmDelete(id: string): void {
+    const dialogRef = this.dialog.open(DeleteConfirmationDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.deleteKey(id);
+      }
+    });
   }
 
   deleteKey(id: string) {

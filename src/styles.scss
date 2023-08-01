@@ -28,3 +28,12 @@ body {
 .spacer {
   flex: 1 1 auto;
 }
+.active-nav {
+  border-bottom: 2px solid white!important;  // simple underline for active state
+  border-radius: 0!important;  // to make sure the border applies cleanly
+}
+
+
+.ml-2 {
+  margin-left: 0.5rem!important;
+}

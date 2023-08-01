@@ -21,6 +21,9 @@ import { AdminComponent } from './admin/admin.component';
 import { MaterialModule } from './material/material.module';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { DeleteConfirmationDialogComponent } from './shared/delete-confirmation-dialog/delete-confirmation-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProfileComponent } from './user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,8 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     DashboardComponent,
     RewardComponent,
     AdminComponent,
+    DeleteConfirmationDialogComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,8 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    HttpClientModule
   ],
   providers: [AuthenticationService],
   bootstrap: [AppComponent]

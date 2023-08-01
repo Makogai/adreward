@@ -21,6 +21,16 @@
           <button mat-raised-button color="primary" [disabled]="!loginForm.valid">Login</button>
         </div>
 
+        <div class="social-login-container">
+          <p>Sign in with</p>
+          <button mat-flat-button (click)="authService.GoogleAuth()" class="google-btn" class="mat-elevation-z1">
+            <mat-icon svgIcon="google"></mat-icon> Google
+          </button>
+          <button mat-flat-button (click)="authService.GithubAuth()" class="google-btn ml-2" class="mat-elevation-z1">
+            <mat-icon svgIcon="github"></mat-icon> GitHub
+          </button>
+        </div>
+
       </form>
     </mat-card-content>
   </mat-card>

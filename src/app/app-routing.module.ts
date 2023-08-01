@@ -7,6 +7,8 @@ import { RewardComponent } from './reward/reward.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { SecureInnerPageGuard } from './shared/guard/secure-inner-page.guard';
 import { AdminComponent } from './admin/admin.component';
+import { AdminGuard } from './shared/guard/admin-guard.guard';
+import { ProfileComponent } from './user/profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -21,8 +23,13 @@ const routes: Routes = [
     {
       path: 'admin',
       component: AdminComponent,
-      canActivate: [SecureInnerPageGuard]
+      canActivate: [SecureInnerPageGuard, AdminGuard]
     },
+    {
+      path: 'profile',
+      component: ProfileComponent,
+      canActivate: [SecureInnerPageGuard]
+      },
 ];
 
 

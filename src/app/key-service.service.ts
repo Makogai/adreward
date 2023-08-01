@@ -21,7 +21,10 @@ export class KeyService {
   addKey(keyValue: string): Promise<any> {
     const key: Key = {
       value: keyValue,
-      status: 'unassigned'
+      status: 'unassigned',
+      user: '',
+      assign_date: Date.now(),
+      creation_date: Date.now()
     };
     return addDoc(this.keysCollection, key);
   }
