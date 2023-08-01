@@ -18,5 +18,5 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ADREWARD_8B3A6 }}'
           channelId: live
           projectId: adreward-8b3a6
-      env:
-       FIREBASE_CLI_EXPERIMENTS: webframeworks
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks
